@@ -1,7 +1,4 @@
-﻿# The script of the game goes in this file.
-
-define mc = Character("You")
-
+﻿
 # The game starts here.
 label start:
 
@@ -20,13 +17,17 @@ label start:
         menu:
             "play as black":
                 call go_minigame(board_size_int, "B")
+                $result_s = _return
             "play as white":
                 call go_minigame(board_size_int, "W")
+                $result_s = _return
             "local multiplayer":
                 call go_minigame(board_size_int, "none")
+                $result_s = _return
             #"ai vs ai":
             #    call playing_go(19, "normal", "ai", "May")
-    # This ends the game.
+
+        #"[result_s]" # test returned game result
     return
 
 label go_minigame(size = 19, colour = "B"):
@@ -65,7 +66,7 @@ label go_minigame(size = 19, colour = "B"):
         "game result white wins!"
     else:
         "game result draw"
-    return
+    return game_result
 
     # game done
 
