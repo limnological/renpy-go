@@ -305,7 +305,12 @@ init python:
             if (not ((board_score_coords[square] == 5) or (board_score_coords[square] == 6))):
                 # add to liberty edge colour
                 edge_colours.append(board[square])
-                #return
+            if (board_score_coords[square] == 5):
+                # add to liberty edge colour
+                edge_colours.append(BLACK)
+            if (board_score_coords[square] == 6):
+                # add to liberty edge colour
+                edge_colours.append(WHITE)
         return
 
     # remove captured stones
