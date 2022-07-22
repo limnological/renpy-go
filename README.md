@@ -19,6 +19,6 @@ To integrate in your Ren'py project:
 
 
 Future plans:
--improving the scoring system, automatic dead group detection
--implementing stronger ai
--13x13 board size
+1. improving the scoring system, automatic dead group detection
+2. implementing stronger ai
+3. 13x13 board size
