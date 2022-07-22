@@ -1,10 +1,4 @@
 
-
-
-## TODO:
-## test everything, improve ai
-
-
 define IMAGE_PATH = 'go-engine/images/'
 image HOVER_IMG = IMAGE_PATH + "hover.png"
 
@@ -741,7 +735,6 @@ init python:
             return render
 
         def event(self, ev, x, y, st):
-            # use screen height b/c chess displayable is a square
             if 0 < x < BOARD_SIDE_LENS[self.board_size] and BOARD_SIDE_START[self.board_size] < y < (BOARD_SIDE_START[self.board_size]+BOARD_SIDE_LENS[self.board_size]) and ev.type == pygame.MOUSEMOTION:
                 self.hover_coord = round_coord(x, y)
                 renpy.redraw(self, 0)
@@ -756,7 +749,6 @@ init python:
         def __init__(self, player_color="none", board_size = 19):
             super(goDisplayable, self).__init__()
 
-            self.history = deque([], 5)# NUM_HISTORY)
             self.player_color = player_color
             self.board_size = board_size
 
@@ -764,9 +756,6 @@ init python:
             self.selected_img = Solid(COLOR_SELECTED, xsize=INTERSECTION_LEN, ysize=INTERSECTION_LEN)
             self.highlight_img = Solid(COLOR_PREV_MOVE, xsize=INTERSECTION_LEN, ysize=INTERSECTION_LEN)
 
-            self.game_status = None
-            # return to _return in script, could be chess.WHITE, chess.BLACK, or, None
-            self.winner = None # None for stalemate
 
         def render(self, width, height, st, at):
             render = renpy.Render(width, height)
@@ -953,7 +942,7 @@ init python:
             rank = 1
         return file, rank
 
-    # ai v ai make move
+    # TODO: ai v ai make move
     def ai_play():
         global WHOSE_TURN, ai_return
         ctr = 1
@@ -980,12 +969,13 @@ init python:
         return
 
     def quit_engine():
-        # NOTE: does not do anything with current ai since w_gtp not continuous process, only called when needed.
-        # might be needed with other ai?
-        try:
-            w_gtp('quit')
-        except SystemExit:
-            pass
+        pass
+        # NOTE: does not do anything with current ai since w_gtp not continuous process, only called when needed. Might be needed with other ai?
+        # TODO: do some memory/variable cleanup here? delete w_ variables?
+        #try:
+        #    w_gtp('quit')
+        #except SystemExit:
+        #    pass
 
 # draw game screen
 screen draw_board(player_colour="none", board_size=19):
@@ -1000,9 +990,6 @@ screen draw_board(player_colour="none", board_size=19):
     default gameOverDisplayable = gameOverDisplayable(player_colour,board_size)
     text "Black:[points_b] White:[points_w]" size 40 xpos 760 ypos 400 color "#000"
 
-    # hide all boards, TODO: when closing screen in future
-    #hide go_board9
-    #hide go_board
 
     # board images
     if (board_size == 9):

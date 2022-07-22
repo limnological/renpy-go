@@ -1,5 +1,7 @@
 *.rpyc
 *.rpymc
+*.bak
+*.json
 errors.txt
 log.txt
 traceback.txt

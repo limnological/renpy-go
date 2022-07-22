@@ -16,13 +16,13 @@ label start:
         "Choose colour:"
         menu:
             "play as black":
-                call go_minigame(board_size_int, "B")
+                call go_minigame(board_size_int, "B") from _call_go_minigame
                 $result_s = _return
             "play as white":
-                call go_minigame(board_size_int, "W")
+                call go_minigame(board_size_int, "W") from _call_go_minigame_1
                 $result_s = _return
             "local multiplayer":
-                call go_minigame(board_size_int, "none")
+                call go_minigame(board_size_int, "none") from _call_go_minigame_2
                 $result_s = _return
             #"ai vs ai":
             #    call playing_go(19, "normal", "ai", "May")
@@ -66,7 +66,6 @@ label go_minigame(size = 19, colour = "B"):
         "game result white wins!"
     else:
         "game result draw"
-    return game_result
 
     # game done
 
@@ -74,3 +73,6 @@ label go_minigame(size = 19, colour = "B"):
     $ _game_menu_screen = 'save'
     $ renpy.block_rollback()
     $ renpy.checkpoint()
+
+    # return game result for broader game use
+    return game_result

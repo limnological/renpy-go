@@ -805,7 +805,7 @@ init python:
             elif 'clear_board' in command: w_clear_board(); print('=\n')
             elif 'play' in command: w_play(command)
             elif 'genmove' in command: ai_return = w_genmove(BLACK if command.split()[-1] == 'B' else WHITE)
-            elif 'quit' in command: sys.exit()
+            elif 'quit' in command: pass #sys.exit()
             else: pass # skip unsupported commands
 
         return ai_return
