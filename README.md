@@ -15,7 +15,9 @@ To integrate in your Ren'py project:
 2. copy the label 'go_minigame' from the 'script.rpy' file and call it as shown in the same file
 3. the game result is returned by that label as "B", "W" or "D" for use in the broader game or for keeping track
 
-![screenshot1](https://user-images.githubusercontent.com/101384203/180039126-67416a1b-9253-498d-b069-1c2d5bc1c0e1.png)
+
+![screenshot2](https://user-images.githubusercontent.com/101384203/180463575-792b6a6e-2e48-4002-8cf4-f34df21dfb6f.jpg)
+![screenshot3](https://user-images.githubusercontent.com/101384203/180463586-211aa724-9af4-414a-aff1-a2e7a7be2835.jpg)
 
 
 Future plans:
